@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>TOSTIceland Trip</title>
+	<title>Photos</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link rel="stylesheet" href="lib/photoswipe.css"> 
 	<link rel="stylesheet" href="lib/default-skin/default-skin.css"> 
@@ -53,22 +53,24 @@
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script src="lib/router.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<script src="lib/photoswipe.min.js"></script>
 	<script src="lib/photoswipe-ui-default.min.js"></script>
 	<script>
-		var title = 'Iceland Trip, March 2016';
-		var tags = 'TOSTiceland';
-		var imageData = [];
-		var imageGallery = [];
+
+		var tag = window.location.hash.replace('#', '');		
 
         $('.image-thumbnails').click(function(e) {
             startGallery(imageData, +e.target.id);
         });
 
-		$('.title').text(title);
+        var imageData = [];
+		var imageGallery = [];
+
+		$('.title').text('#'+tag);
 		$.ajax({ 
-			url: 'https://getstagram.herokuapp.com/tag/'+'TOSTiceland'
+			url: 'https://getstagram.herokuapp.com/tag/'+tag
 		}).done(function(data){
 			imageData = data.posts;
 			showThumbnails(imageData);
@@ -100,6 +102,9 @@
 	</script>
 
 	<style type="text/css">
+		.title {
+			font-weight: 100;
+		}
 		.image-thumbnails {
 			cursor: pointer;
 		}
