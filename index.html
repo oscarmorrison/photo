@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>TOSTIceland Trip</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="lib/photoswipe.css"> 
+	<link rel="stylesheet" href="lib/default-skin/default-skin.css"> 
+</head>
+<body>
+
+	<div class="row">
+		<div class="content col-md-10 col-md-offset-2">
+			<h2 class="title"></h2>
+			<div class="image-thumbnails">
+			</div>
+			<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+				<div class="pswp__bg"></div>
+				<div class="pswp__scroll-wrap">
+					<div class="pswp__container">
+						<div class="pswp__item"></div>
+						<div class="pswp__item"></div>
+						<div class="pswp__item"></div>
+					</div>
+					<div class="pswp__ui pswp__ui--hidden">
+						<div class="pswp__top-bar">
+							<div class="pswp__counter"></div>
+							<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+							<button class="pswp__button pswp__button--share" title="Share"></button>
+							<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+							<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+							<div class="pswp__preloader">
+								<div class="pswp__preloader__icn">
+									<div class="pswp__preloader__cut">
+										<div class="pswp__preloader__donut"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+							<div class="pswp__share-tooltip"></div> 
+						</div>
+						<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+						</button>
+						<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+						</button>
+						<div class="pswp__caption">
+							<div class="pswp__caption__center"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script src="lib/photoswipe.min.js"></script>
+	<script src="lib/photoswipe-ui-default.min.js"></script>
+	<script>
+		var title = 'Iceland Trip, March 2016';
+		var tags = 'TOSTiceland';
+		var imageData = [];
+		var imageGallery = [];
+
+        $('.image-thumbnails').click(function(e) {
+            startGallery(imageData, +e.target.id);
+        });
+
+		$('.title').text(title);
+		$.ajax({ 
+			url: 'https://getstagram.herokuapp.com/tag/'+'TOSTiceland'
+		}).done(function(data){
+			imageData = data.posts;
+			showThumbnails(imageData);
+		});
+
+		var showThumbnails = function(data){
+			data.forEach(function(image, i){
+				var imageMarkup = '<img id="'+i+'" src="'+image.thumbnail_src+'" width="300px">';
+				$('.image-thumbnails').prepend(imageMarkup);
+			});
+		};
+
+		var startGallery = function(data, i){
+			var pswpElement = document.querySelectorAll('.pswp')[0];
+			var items = [];
+			data.forEach(function(image){
+				items.push({
+					src: image.display_src,
+					w: image.dimensions.width,
+					h: image.dimensions.height
+				});
+			});
+			var options = { index: i };
+			var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+			gallery.init();
+		};
+
+	</script>
+
+	<style type="text/css">
+		.image-thumbnails {
+			cursor: pointer;
+		}
+	</style>
+
+</body>
+</html>
