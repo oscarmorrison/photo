@@ -2,15 +2,13 @@
 <html lang="en">
 <head>
 	<title>Photos</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link rel="stylesheet" href="lib/photoswipe.css"> 
 	<link rel="stylesheet" href="lib/default-skin/default-skin.css"> 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
-	<div class="row">
-		<div class="content .col-xs-12 col-md-10 col-md-offset-2">
+	<div class="content">
 			<h2 class="title"></h2>
 			<div class="image-thumbnails">
 			</div>
@@ -50,11 +48,9 @@
 					</div>
 				</div>
 			</div>
-		</div>
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<script src="lib/photoswipe.min.js"></script>
 	<script src="lib/photoswipe-ui-default.min.js"></script>
 	<script>
@@ -102,25 +98,42 @@
 				gallery.init();
 			}
 		} else {
-			$('.content').append('<a href="#TOSTiceland" onclick="location.reload();">#TOSTiceland</a><br>');
-			$('.content').append('<a href="#TahneeandOscarUSA" onclick="location.reload();">#TahneeandOscarUSA</a><br>');
-			$('.content').append('<a href="#TOthailand2014" onclick="location.reload();">#TOthailand2014</a><br>');
+			var tags = ['#TOSTiceland', '#TahneeandOscarUSA', '#TOthailand2014'];
+			tags.forEach(function(tag){
+				$('.content').append('<a href="http://oscarmorrison.com/photo/'+tag+'"">'+tag+'</a><br>');
+			})
 		}
 
 	</script>
 
 	<style type="text/css">
-		@media only screen and (max-width: 600px) {
-		    .image-thumbnails img{
-		    	display:block;
-			    margin:auto;
-		    }
+		html, body{
+			font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+			padding: 0;
+			margin: 0;
+		}
+		.content {
+			width: 83%;
+			margin-left: 16.66666667%;
 		}
 		.title {
 			font-weight: 100;
 		}
 		.image-thumbnails {
 			cursor: pointer;
+		}
+		@media only screen and (max-width: 600px) {
+			.title {
+				text-align: center;
+			}
+			.content {
+				width: 100%;
+				margin-left: 0%;
+			}
+		    .image-thumbnails img{
+		    	display:block;
+			    margin:auto;
+		    }
 		}
 	</style>
 
