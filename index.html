@@ -5,11 +5,12 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link rel="stylesheet" href="lib/photoswipe.css"> 
 	<link rel="stylesheet" href="lib/default-skin/default-skin.css"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
 	<div class="row">
-		<div class="content col-md-10 col-md-offset-2">
+		<div class="content .col-xs-12 col-md-10 col-md-offset-2">
 			<h2 class="title"></h2>
 			<div class="image-thumbnails">
 			</div>
@@ -109,6 +110,12 @@
 	</script>
 
 	<style type="text/css">
+		@media only screen and (max-width: 600px) {
+		    .image-thumbnails img{
+		    	display:block;
+			    margin:auto;
+		    }
+		}
 		.title {
 			font-weight: 100;
 		}
