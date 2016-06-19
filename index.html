@@ -112,7 +112,7 @@
 			tags.forEach(function(tag){
 				var markup = '<a href="http://oscarmorrison.com/photo/';
 				markup += tag;
-				markup += '" onclick="location.reload();">'+tag+'</a><br>';
+				markup += '" target="_blank">'+tag+'</a><br>';
 				console.log(markup);
 				$('.tagList').append(markup);
 			});
