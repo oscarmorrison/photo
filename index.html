@@ -10,9 +10,8 @@
 
 	<div class="content">
 			<a href="https://oscarmorrison.com/photo/"><h2 class="title"></h2></a>
-			<div class="image-thumbnails">
-			</div>
 			<div class="tagList"></div>
+			<div class="image-thumbnails"></div>
 			<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 				<div class="pswp__bg"></div>
 				<div class="pswp__scroll-wrap">
@@ -81,7 +80,6 @@
 
 		var tag = window.location.hash;
 		if(tag){
-			console.log(tag);
 			tag = tag.replace('#', '');		
 
 	        $('.image-thumbnails').click(function(e) {
@@ -98,9 +96,19 @@
 				imageData = data.posts;
 				showThumbnails(imageData);
 			});
+			var i = 0;
+			var timer = setInterval(function() {
+				if(imageData.length === 0) {
+					$('.tagList').html('loading'+Array((++i % 4)+1).join('.'));
+				} else {
+					$('.tagList').empty();
+					clearInterval(timer);
+				}
+			}, 800);
 		} else {
 			console.log("tag");
 			var tags = ['#TOSTiceland', '#TahneeandOscarUSA', '#TahneeandOscarinSF', '#DOTTCHRoadTrip', '#TahneeandOscarinNewYork', '#OCTTRoadTrip', '#TOTUSRoadTrip', '#TOthailand2014'];
+			$("tagList").empty();
 			tags.forEach(function(tag){
 				var markup = '<a href="http://oscarmorrison.com/photo/';
 				markup += tag;
@@ -121,6 +129,10 @@
 		}
 		img {
 			vertical-align: middle;
+		}
+		.tagList {
+			font-weight: 100;
+			font-size: 1.3em;
 		}
 		.tagList a{
 			background-color: black;
