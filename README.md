@@ -1,2 +1,3 @@
-Instagram tag displaying website, 
-fork of https://github.com/oscarmorrison/TOSTIceland
+Instagram tag displaying website.
+
+Live site: http://oscarmorrison.com/photo/#TOSTiceland
