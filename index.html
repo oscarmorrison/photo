@@ -79,11 +79,24 @@
 		}
 
 		var tag = window.location.hash;
+
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-31078497-15', 'auto');
+		if(tag){
+			ga('set', 'page', '#'+tag);
+		}
+		ga('send', 'pageview');
+		
 		if(tag){
 			tag = tag.replace('#', '');		
 
 	        $('.image-thumbnails').click(function(e) {
-	            startGallery(imageData, +e.target.id);
+	            startGallery(imageData, + e.target.id);
+	            ga('send', 'event', 'clickImage', 'click', e.target.id);
 	        });
 
 	        var imageData = [];
@@ -106,7 +119,6 @@
 				}
 			}, 800);
 		} else {
-			console.log("tag");
 			var tags = ['#TOSTiceland', '#TahneeandOscarUSA', '#TahneeandOscarinSF', '#DOTTCHRoadTrip', '#TahneeandOscarinNewYork', '#OCTTRoadTrip', '#TOTUSRoadTrip', '#TOthailand2014'];
 			$("tagList").empty();
 			tags.forEach(function(tag){
@@ -117,7 +129,6 @@
 				$('.tagList').append(markup);
 			});
 		}
-
 	</script>
 
 	<style type="text/css">
