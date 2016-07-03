@@ -58,7 +58,7 @@
 		function showThumbnails(data){
 			data.forEach(function(image, i){
 				var imageMarkup = '<img id="'+i+'" src="'+image.thumbnail_src+'" width="300px">';
-				$('.image-thumbnails').prepend(imageMarkup);
+				$('.image-thumbnails').append(imageMarkup);
 			});
 		}
 
