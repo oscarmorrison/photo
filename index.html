@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 	<title>Photos</title>
-	<link rel="stylesheet" href="lib/photoswipe.css"> 
-	<link rel="stylesheet" href="lib/default-skin/default-skin.css"> 
+	<link rel="stylesheet" href="lib/photoswipe.css">
+	<link rel="stylesheet" href="lib/default-skin/default-skin.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -36,7 +36,7 @@
 							</div>
 						</div>
 						<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-							<div class="pswp__share-tooltip"></div> 
+							<div class="pswp__share-tooltip"></div>
 						</div>
 						<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
 						</button>
@@ -91,9 +91,9 @@
 			ga('set', 'page', '#'+tag);
 		}
 		ga('send', 'pageview');
-		
+
 		if(tag){
-			tag = tag.replace('#', '');		
+			tag = tag.replace('#', '');
 
 	        $('.image-thumbnails').click(function(e) {
 	            startGallery(imageData, + e.target.id);
@@ -104,7 +104,7 @@
 			var imageGallery = [];
 
 			$('.title').text('#'+tag);
-			$.ajax({ 
+			$.ajax({
 				url: 'https://getstagram.herokuapp.com/tag/'+tag
 			}).done(function(data){
 				imageData = data.posts;
@@ -120,7 +120,7 @@
 				}
 			}, 800);
 		} else {
-			var tags = ['#TahneeandOscarEurope', '#TOSTiceland', '#TahneeandOscarUSA', '#TahneeandOscarinSF', '#DOTTCHRoadTrip', '#TahneeandOscarinNewYork', '#OCTTRoadTrip', '#TOTUSRoadTrip', '#TOthailand2014'];
+			var tags = ['#TahneeandOscarHawaii17', '#TahneeandOscarEurope', '#TOSTiceland', '#TahneeandOscarUSA', '#TahneeandOscarinSF', '#DOTTCHRoadTrip', '#TahneeandOscarinNewYork', '#OCTTRoadTrip', '#TOTUSRoadTrip', '#TOthailand2014'];
 			$("tagList").empty();
 			tags.forEach(function(tag){
 				var markup = '<a href="http://oscarmorrison.com/photo/';
